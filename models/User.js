@@ -9,10 +9,10 @@ const userSchema = new Schema(
             unique: true,
             trim: true,
         },
-        email: { // String, required, unique, must be valid
+        email: {
             type: String,
             unique: true,
-            validate: [isEmail, "Invalid email"],            
+            validate: [isEmail, "Invalid email"], // May need testing.            
         },
         thoughts: { // Array of _id values referencing the Thought model (?)
 
