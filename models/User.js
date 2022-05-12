@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const { isEmail } = require('validator');
 
 const userSchema = new Schema(
     {
@@ -8,14 +9,16 @@ const userSchema = new Schema(
             unique: true,
             trim: true,
         },
-        email: {
+        email: { // String, required, unique, must be valid
+            type: String,
+            unique: true,
+            validate: [isEmail, "Invalid email"],            
+        },
+        thoughts: { // Array of _id values referencing the Thought model (?)
 
         },
-        thoughts: {
-
-        },
-        friends: {
-
+        friends: { // Array of _id values referencing the User model (self reference)
+            // Also need a virtual which retrieves the length of a user's friends array on query. 
         }
     },
     {
