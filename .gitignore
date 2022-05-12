@@ -1,1 +1,5 @@
+# Node module files (express, mongoose)
 node_modules/
+
+# Notes towards building a final read me, not required in github
+FutureDevelopment.md
