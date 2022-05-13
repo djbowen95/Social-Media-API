@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const reactionSchema = require('./Reaction')
 
 const thoughtSchema = new Schema(
     {
@@ -15,10 +16,7 @@ const thoughtSchema = new Schema(
             type: String,
             required: true,
         },
-        reactions: {
-            // Array of nested documents created with the reaction schema.
-            // Need a virtual called reactionCount that retrieves the length of the thoughts reactions array. 
-        }
+        reactions: [reactionSchema],
     },
     {
         toJSON: {
@@ -28,6 +26,7 @@ const thoughtSchema = new Schema(
 );
 
 // Need a getter to format the date. 
+// Need a virtual called reactionCount that retrieves the length of the thoughts reactions array. 
 
 const Thought = model('thought', thoughtSchema);
 
