@@ -14,12 +14,18 @@ const userSchema = new Schema(
             unique: true,
             validate: [isEmail, "Invalid email"], // May need testing.            
         },
-        thoughts: { // Array of _id values referencing the Thought model (?)
-
-        },
-        friends: { // Array of _id values referencing the User model (self reference)
-            // Also need a virtual which retrieves the length of a user's friends array on query. 
-        }
+        thoughts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Thoughts",
+            }
+        ],
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Users",
+            }
+        ]
     },
     {
         toJSON: {
@@ -27,6 +33,9 @@ const userSchema = new Schema(
         },
     }
 );
+
+// Also need a virtual which retrieves the length of a user's friends array on query. 
+
 
 const User = model('user', userSchema);
 

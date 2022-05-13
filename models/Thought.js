@@ -31,7 +31,6 @@ thoughtSchema.virtual("reactionCount").get(() => { // TEST this as arrow functio
 })
 
 // Need a getter to format the date. 
-// Need a virtual called reactionCount that retrieves the length of the thoughts reactions array. 
 
 const Thought = model('thought', thoughtSchema);
 
