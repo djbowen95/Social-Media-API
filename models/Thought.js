@@ -25,6 +25,11 @@ const thoughtSchema = new Schema(
     }
 );
 
+// Virtual to get length of reaction array (number of reactions stored within this thought):
+thoughtSchema.virtual("reactionCount").get(() => { // TEST this as arrow function was own choice.
+    return this.reactions.length;
+})
+
 // Need a getter to format the date. 
 // Need a virtual called reactionCount that retrieves the length of the thoughts reactions array. 
 
