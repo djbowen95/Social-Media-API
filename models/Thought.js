@@ -1,5 +1,7 @@
 const { Schema, model } = require('mongoose');
-const reactionSchema = require('./Reaction')
+const reactionSchema = require('./Reaction');
+const formatDate = require('../utils/formatDate');
+
 
 const thoughtSchema = new Schema(
     {
@@ -11,6 +13,7 @@ const thoughtSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
+            get: createdAt => formatDate(createdAt),
         },
         username: {
             type: String,
@@ -25,12 +28,10 @@ const thoughtSchema = new Schema(
     }
 );
 
-// Virtual to get length of reaction array (number of reactions stored within this thought):
-thoughtSchema.virtual("reactionCount").get(() => { // TEST this as arrow function was own choice.
+// Virtual to track total no. reactions for thought:
+thoughtSchema.virtual("reactionCount").get(() => { // TEST
     return this.reactions.length;
-})
-
-// Need a getter to format the date. 
+});
 
 const Thought = model('thought', thoughtSchema);
 

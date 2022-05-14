@@ -12,7 +12,7 @@ const userSchema = new Schema(
         email: {
             type: String,
             unique: true,
-            validate: [isEmail, "Invalid email format"], // May need testing.            
+            validate: [isEmail, "Invalid email format"], // TEST.            
         },
         thoughts: [
             {
@@ -34,7 +34,7 @@ const userSchema = new Schema(
     }
 );
 
-// Virtual to count number of friends referenced in the friends array of a user:
+// Virtual to track total friend count for the user:
 userSchema.virtual("friendCount").get(() => {
     return this.friends.length;
 });
