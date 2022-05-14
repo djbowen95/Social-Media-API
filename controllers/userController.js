@@ -1,11 +1,22 @@
-const res = require("express/lib/response");
 const { User } = require("../models");
 
 const getAllUsers = (req, res) => {
-  User.find()
-    .then((users) => res.json(users))
-    .catch((err) => res.status(500).json(err));
+  console.log("Request recieved.")
+  User.find({}, function(err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(result);
+    }
+  })
 };
+/*    
+    ).then((users) => {
+      console.log(users);
+      res.json(users);
+    })
+    .catch((err) => res.status(500).json(err));
+};*/
 
 const createUser = (req, res) => {
   User.create(req.body)
