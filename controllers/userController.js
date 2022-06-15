@@ -4,9 +4,7 @@ const userControllers = {
   getAllUsers(req, res) {
     User.find()
       .select("-__v")
-      .then((allUsers) => {
-        res.json(allUsers);
-      })
+      .then((allUsers) => res.json(allUsers))
       .catch((err) => res.status(500).json(err));
   },
   getOneUser(req, res) {
