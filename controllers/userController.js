@@ -26,7 +26,12 @@ const userControllers = {
         res.status(500).json(err);
       });
   },
- 
+  createUser(req, res) {
+    User.create(req.body)
+      .then((newUser) => res.json(newUser))
+      .catch((err) => res.status(500).json(err));
+  },
+
 };
 
 module.exports = userControllers;
