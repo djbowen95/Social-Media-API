@@ -50,6 +50,11 @@ const thoughtController = {
     ).then((updatedThought) => res.json(updatedThought))
     .catch((err) => res.status(500).json(err));
   },
+  deleteThought(req, res) {
+    Thought.findOneAndDelete( { _id: req.params.thoughtId })
+    .then((deletedThought) => res.json(deletedThought))
+    .catch((err) => res.status(500).json(err));
+  }
 };
 
 module.exports = thoughtController;
