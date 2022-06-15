@@ -52,7 +52,14 @@ const userControllers = {
       ).then((newFriend) => res.json(newFriend))
       .catch((err) => res.status(500).json(err));
   },
-
+  removeFriend(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $pull: { friends: req.params.friendId } },
+      { new: true }
+    ).then((removedFriend) => res.json(removedFriend))
+    .catch((err) => res.status(500).json(err)); 
+  }
 };
 
 module.exports = userControllers;
