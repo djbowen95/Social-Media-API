@@ -42,6 +42,14 @@ const thoughtController = {
       })
       .catch((err) => res.status(500).json(err));
   },
+  updateThought(req, res) {
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId },
+      { $set: req.body },
+      { new: true }
+    ).then((updatedThought) => res.json(updatedThought))
+    .catch((err) => res.status(500).json(err));
+  },
 };
 
 module.exports = thoughtController;

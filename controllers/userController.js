@@ -7,9 +7,7 @@ const userControllers = {
       .then((allUsers) => {
         res.json(allUsers);
       })
-      .catch((err) => {
-        res.status(500).json(err);
-      });
+      .catch((err) => res.status(500).json(err));
   },
   getOneUser(req, res) {
     User.findOne({ _id: req.params.userId })
@@ -22,9 +20,7 @@ const userControllers = {
         }
         res.json(oneUser);
       })
-      .catch((err) => {
-        res.status(500).json(err);
-      });
+      .catch((err) => res.status(500).json(err));
   },
   createUser(req, res) {
     User.create(req.body)
