@@ -29,7 +29,10 @@ const thoughtSchema = new Schema(
 );
 
 // Virtual to track total no. reactions for thought:
-thoughtSchema.virtual("reactionCount").get(() => { // TEST
+thoughtSchema.virtual("reactionCount").get(() => {
+    if (!this.reactions) {
+        return 0;
+    }
     return this.reactions.length;
 });
 
