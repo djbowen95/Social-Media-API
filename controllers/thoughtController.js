@@ -10,6 +10,19 @@ const thoughtController = {
       })
       .catch((err) => res.status(500).json(err));
   },
+  getOneThought(req, res) {
+    Thought.findOne({ _id: req.params.thoughtId })
+      .select("-__v")
+      .then((oneThought) => {
+        if (!oneThought) {
+          return res
+            .status(404)
+            .json({ message: "Thought with this ID not found." });
+        }
+        res.json(oneThought);
+      })
+      .catch((err) => res.status(500).json(err));
+  },
   createThought(req, res) {
     Thought.create(req.body)
       .then((thought) => {
@@ -21,11 +34,9 @@ const thoughtController = {
       })
       .then((user) => {
         if (!user) {
-          return res
-            .status(404)
-            .json({
-              message: "Thought created but no user found with this ID.",
-            });
+          return res.status(404).json({
+            message: "Thought created but no user found with this ID.",
+          });
         }
         res.json("Thought successfully created.");
       })
