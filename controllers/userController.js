@@ -44,6 +44,15 @@ const userControllers = {
     .then((deletedUser) => res.json(deletedUser))
     .catch((err) => res.status(500).json(err));
   },
+  addFriend(req, res) {
+    User.findOneAndUpdate( 
+      { _id: req.params.userId },
+      { $addToSet: { friends: req.params.friendId } },
+      { new: true }
+      ).then((newFriend) => res.json(newFriend))
+      .catch((err) => res.status(500).json(err));
+  },
+
 };
 
 module.exports = userControllers;
