@@ -39,7 +39,11 @@ const userControllers = {
     ).then((updatedUser) => res.json(updatedUser))
     .catch((err) => res.status(500).json(err));
   },
-
+  deleteUser(req, res) {
+    User.findOneAndDelete({_id: req.params.userId})
+    .then((deletedUser) => res.json(deletedUser))
+    .catch((err) => res.status(500).json(err));
+  },
 };
 
 module.exports = userControllers;
