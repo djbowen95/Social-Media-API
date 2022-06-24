@@ -3,9 +3,11 @@
 
 ## Demonstration Video
 The video demonstration of this application is in three parts:  
-Part one: https://drive.google.com/file/d/1KoKWxCmrjT_RMXjkNRKYJiCmpLon5udW/view  
+Part one: https://drive.google.com/file/d/1KoKWxCmrjT_RMXjkNRKYJiCmpLon5udW/view * 
 Part two: https://drive.google.com/file/d/12uSwk7OFd6T0tNGlnw8bBDfC2XRcDVKI/view  
 Part three: https://drive.google.com/file/d/15xeSD2VhDvq49BxCWRFx7zyh3ukT69S4/view  
+
+* NOTE: Error in this part; I said that the API queries were built with GraphQL, but this is a RESTFUL API application.  
 
 ## Description
 This is the back-end API for a social media application. The API can create users, have them create friend relationships, add thoughts, add react to thoughts. The database is MongoDB and the querying is done with GraphQL.
