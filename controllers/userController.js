@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Thought } = require("../models");
 
 const userControllers = {
   getAllUsers(req, res) {
@@ -30,20 +30,30 @@ const userControllers = {
       { _id: req.params.userId },
       { $set: req.body },
       { new: true }
-    ).then((updatedUser) => res.json(updatedUser))
-    .catch((err) => res.status(500).json(err));
+    )
+      .then((updatedUser) => res.json(updatedUser))
+      .catch((err) => res.status(500).json(err));
   },
   deleteUser(req, res) {
-    User.findOneAndDelete({_id: req.params.userId})
-    .then((deletedUser) => res.json(deletedUser))
-    .catch((err) => res.status(500).json(err));
+    User.findOneAndDelete({ _id: req.params.userId })
+      .then((deletedUser) => {
+        if(!deletedUser) {
+          return res.status(404).json({message: "No user was found with this ID."})
+        }
+        return Thought.deleteMany({ _id: { $in: deletedUser.thoughts }})
+      })
+      .then(() => {
+        res.json({message: "User and thoughts successfully deleted."})
+      })
+      .catch((err) => res.status(500).json(err));
   },
   addFriend(req, res) {
-    User.findOneAndUpdate( 
+    User.findOneAndUpdate(
       { _id: req.params.userId },
       { $addToSet: { friends: req.params.friendId } },
       { new: true }
-      ).then((newFriend) => res.json(newFriend))
+    )
+      .then((newFriend) => res.json(newFriend))
       .catch((err) => res.status(500).json(err));
   },
   removeFriend(req, res) {
@@ -51,9 +61,10 @@ const userControllers = {
       { _id: req.params.userId },
       { $pull: { friends: req.params.friendId } },
       { new: true }
-    ).then((removedFriend) => res.json(removedFriend))
-    .catch((err) => res.status(500).json(err)); 
-  }
+    )
+      .then((removedFriend) => res.json(removedFriend))
+      .catch((err) => res.status(500).json(err));
+  },
 };
 
 module.exports = userControllers;
