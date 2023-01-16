@@ -67,7 +67,7 @@ Currently is MIT and did have a badge - but want to check and possibly change th
 ### Contribution Guidelines
 Contact me - lock repo - look at the open issues as that is the next feature I want to work on.
 ### Future Development
-Unique branding and a front-end - boring project at the moment! Rainbow themed? Or attach it to a blog (can also link to React blog once that has been built. 
+Unique branding and a front-end - boring project at the moment! Rainbow themed? Or attach it to a blog (can also link to React blog once that has been built.  Also might want to deploy onto AWS - look at this video for how to do it to EC2 (https://www.youtube.com/watch?v=7vf210p2tJg).
 ## Questions
 Contact info here - linkedin, portfolio, github home, maybe a dev twitter.
 If you have any questions about this project, please contact me at:  
