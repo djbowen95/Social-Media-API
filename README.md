@@ -28,7 +28,7 @@ This is the back-end API for a social media application. The API can create user
 
 ## About
 ### Project History
-Project built for bootcamp - history of bootcamp - context in the course (which 'module', which week). What I learned from it, enjoyed and didn't enjoy.
+Project built for bootcamp - history of bootcamp - context in the course (which 'module', which week). What I learned from it, enjoyed and didn't enjoy. Include a link to the project brief here (and was there starter code?).
 
 ### Demonstration Video
 The video demonstration of this application is in three parts:  
